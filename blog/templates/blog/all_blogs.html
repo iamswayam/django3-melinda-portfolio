@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<body style="background-color:rgb(213, 232, 235);">
+    <h2 style="color:rgb(43, 5, 114)">Melinda has done {{ blogs.count }} article{{ blogs.count|pluralize }} & interview{{ blogs.count|pluralize }}</h2>
+
+    {% for blog in blogs %}
+
+    <a href="{% url 'blog:detail' blog.id %}"><h2>{{  blog.title  }}</h2></a>
+    <p>{{ blog.description|striptags|truncatechars:120 }}</p>
+    <p>{{ blog.date|date:'M d Y'|upper}}</p>
+    <br>
+</body>
+    {% endfor %}
+
+{% endblock %}
